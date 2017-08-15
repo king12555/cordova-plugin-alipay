@@ -26,7 +26,7 @@
     // 第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理
     var payInfo  = "xxxx";
 
-    // 第二步：调用支付插件            
+    // 第二步：调用alipay支付插件            
     cordova.plugins.alipay.payment(payInfo,function success(e){},function error(e){});
 
      //e.resultStatus  状态代码  e.result  本次操作返回的结果数据 e.memo 提示信息
@@ -38,3 +38,19 @@
                  * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
                  * docType=1) 建议商户依赖异步通知
                  */
+
+### 外部js引用
+    
+    //第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理
+    var payInfo  = "xxxx";
+
+    //第二步：需要引用ZFBPaySDKPlugin.js
+    
+    //第三步：调用ZFBPaySDKPlugin支付插件 
+    ZFBPaySDKPlugin.PayEvent( payInfo,
+        function success(e){
+            alert('支付成功');
+        },function error(e){
+            alert(JSON.stringify(e));
+        }
+    );
